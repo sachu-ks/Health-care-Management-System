@@ -1,0 +1,182 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Doctors</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Pooled Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
+    <script type="application/x-javascript">
+         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+
+    </script>
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'css5/bootstrap.min.css' %}" rel='stylesheet' type='text/css'/>
+    <!-- Custom CSS -->
+    <link href="{% static 'css5/style.css' %}" rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="{% static 'css5/morris.css' %}" type="text/css"/>
+    <!-- Graph CSS -->
+    <link href="{% static 'css5/font-awesome.css' %}" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="{% static 'js5/jquery-2.1.4.min.js' %}"></script>
+    <!-- //jQuery -->
+
+    <!-- lined-icons -->
+    <link rel="stylesheet" href="{% static 'css5/icon-font.min.css' %}" type='text/css'/>
+    <!-- //lined-icons -->
+	<style type="text/css">
+	select
+	{
+		padding: 0rem 0rem;
+    	text-transform: uppercase;
+    	display: block;
+	    width: 100%;
+	    height: 34px;
+	    padding: 6px 12px;
+	    font-size: 14px;
+	    line-height: 1.42857143;
+	    color: #555;
+	    background-color: #fff;
+	    background-image: none;
+	    border: 1px solid #ccc;
+	}
+</style>
+</head>
+<body>
+<div class="page-container">
+    <!--/content-inner-->
+    <div class="left-content">
+        <div class="mother-grid-inner">
+            <!--header start here-->
+            {% include 'side.html' %}
+            <!--heder end here-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'admin_home' %}">Home</a><i class="fa fa-angle-right"></i>Doctors <i
+                        class="fa fa-angle-right"></i></li>
+            </ol>
+            <!--grid-->
+            <div class="grid-form">
+                <div class="grid-form1">
+                    <h2 id="forms-example" class=""> Staff</h2>
+                    <form action="{% url 'finalstaff' %}" method="post">{% csrf_token %}
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Name</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" name="name"
+                                   placeholder="Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Email</label>
+                            <input type="email" class="form-control" id="exampleInputPassword1" name="email"
+                                   placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Username</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" name="username"
+                                   placeholder="Username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" name="password"
+                                   placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Address</label>
+                            <textarea type="text" class="form-control" id="exampleInputPassword1" name="address"
+									  placeholder="Address" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Phone Number</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" name="phone"
+                                   placeholder="Phone Number" pattern="[0-9]{10}" required>
+                        </div>
+                     
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Gender</label>
+                            <select name="gender">
+
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
+
+                <div>
+                    {% if status == 'exist' %}
+                        <p>User Already Exist</p>
+                    {% elif status == 'success' %}
+                        <p>Successfully Added!!!</p>
+                    {% elif status == 'failed' %}
+                        <p>Failed. Try Again</p>
+                    {% endif %}
+                </div>
+
+                <!--//grid-->
+
+                <!-- script-for sticky-nav -->
+                <script>
+		$(document).ready(function() {
+			 var navoffeset=$(".header-main").offset().top;
+			 $(window).scroll(function(){
+				var scrollpos=$(window).scrollTop(); 
+				if(scrollpos >=navoffeset){
+					$(".header-main").addClass("fixed");
+				}else{
+					$(".header-main").removeClass("fixed");
+				}
+			 });
+			 
+		});
+
+
+                </script>
+                <!-- /script-for sticky-nav -->
+                <!--inner block start here-->
+                <div class="inner-block">
+
+                </div>
+                <!--inner block end here-->
+                <!--copy rights start here-->
+                {% include 'adminfooter.html' %}
+                <!--COPY rights end here-->
+            </div>
+        </div>
+        <!--//content-inner-->
+        <!--/sidebar-menu-->
+
+        {% include 'adminheader.html' %}
+        <script>
+							var toggle = true;
+										
+							$(".sidebar-icon").click(function() {                
+							  if (toggle)
+							  {
+								$(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
+								$("#menu span").css({"position":"absolute"});
+							  }
+							  else
+							  {
+								$(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
+								setTimeout(function() {
+								  $("#menu span").css({"position":"relative"});
+								}, 400);
+							  }
+											
+											toggle = !toggle;
+										});
+
+
+        </script>
+        <!--js -->
+        <script src="{% static 'js5/jquery.nicescroll.js' %}"></script>
+        <script src="{% static 'js5/scripts.js' %}"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{% static 'js5/bootstrap.min.js' %}"></script>
+        <!-- /Bootstrap Core JavaScript -->
+
+</body>
+</html>

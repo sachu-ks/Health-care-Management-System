@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Upload File</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Pooled Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
+    <script type="application/x-javascript">
+         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+
+    </script>
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'css5/bootstrap.min.css' %}" rel='stylesheet' type='text/css'/>
+    <!-- Custom CSS -->
+    <link href="{% static 'css5/style.css' %}" rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="{% static 'css5/morris.css' %}" type="text/css"/>
+    <!-- Graph CSS -->
+    <link href="{% static 'css5/font-awesome.css' %}" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="{% static 'js5/jquery-2.1.4.min.js' %}"></script>
+    <!-- //jQuery -->
+
+    <!-- lined-icons -->
+    <link rel="stylesheet" href="{% static 'css5/icon-font.min.css' %}" type='text/css'/>
+    <!-- //lined-icons -->
+</head>
+<body>
+<div class="page-container">
+    <!--/content-inner-->
+    <div class="left-content">
+        <div class="mother-grid-inner">
+            <!--header start here-->
+            {% include 'side.html' %}
+            <!--heder end here-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'admin_home' %}">Home</a><i class="fa fa-angle-right"></i>Upload
+                    File <i class="fa fa-angle-right"></i></li>
+            </ol>
+            <!--grid-->
+            <div class="grid-form">
+                <div class="grid-form1">
+                    <h2 id="forms-example" class=""> Upload File</h2>
+                    <form action="{% url 'upload_file' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1"></label>
+                            <select required="" class="form-control" id="exampleInputPassword1" name="patient" >
+                                <option disabled="disabled">Choose Patient</option>
+                                {% for p in patient %}
+                                    <option value="{{p.id}}">{{p.name}}</option>
+                                {% endfor %}
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1"></label>
+                            <select required="" class="form-control" id="exampleInputPassword1" name="doctor" >
+                                <option disabled="disabled">Choose Doctor</option>
+                                {% for d in doctor %}
+                                    <option value="{{d.id}}">{{d.name}}</option>
+                                {% endfor %}
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1"></label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" name="file"
+                                   placeholder="Choose Your File" onclick="this.type='file'" required>
+
+                        </div>
+
+
+                        <!-- <div class="checkbox">
+                          <label>
+                            <input type="checkbox"> Check me out
+                          </label>
+                        </div> -->
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
+                <div>
+                    {% if status == 'exist' %}
+                        <p>Patient Records Already Exist</p>
+                    {% elif status == 'success' %}
+                        <p>Patients Record Successfully Added!!!</p>
+                    {% elif status == 'failed' %}
+                        <p>File Upload Failed. Try Again</p>
+                    {% endif %}
+                </div>
+
+
+                <!--//grid-->
+
+                <!-- script-for sticky-nav -->
+                <script>
+		$(document).ready(function() {
+			 var navoffeset=$(".header-main").offset().top;
+			 $(window).scroll(function(){
+				var scrollpos=$(window).scrollTop(); 
+				if(scrollpos >=navoffeset){
+					$(".header-main").addClass("fixed");
+				}else{
+					$(".header-main").removeClass("fixed");
+				}
+			 });
+			 
+		});
+
+
+                </script>
+                <!-- /script-for sticky-nav -->
+                <!--inner block start here-->
+                <div class="inner-block">
+
+                </div>
+                <!--inner block end here-->
+                <!--copy rights start here-->
+                {% include 'adminfooter.html' %}
+                <!--COPY rights end here-->
+            </div>
+        </div>
+        <!--//content-inner-->
+        <!--/sidebar-menu-->
+
+        {% include 'adminheader.html' %}
+        <script>
+							var toggle = true;
+										
+							$(".sidebar-icon").click(function() {                
+							  if (toggle)
+							  {
+								$(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
+								$("#menu span").css({"position":"absolute"});
+							  }
+							  else
+							  {
+								$(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
+								setTimeout(function() {
+								  $("#menu span").css({"position":"relative"});
+								}, 400);
+							  }
+											
+											toggle = !toggle;
+										});
+
+
+        </script>
+        <!--js -->
+        <script src="{% static 'js5/jquery.nicescroll.js' %}"></script>
+        <script src="{% static 'js5/scripts.js' %}"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{% static 'js5/bootstrap.min.js' %}"></script>
+        <!-- /Bootstrap Core JavaScript -->
+
+</body>
+</html>

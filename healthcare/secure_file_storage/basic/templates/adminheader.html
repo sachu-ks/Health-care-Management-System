@@ -1,0 +1,49 @@
+<div class="sidebar-menu">
+    <header class="logo1">
+        <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a>
+    </header>
+    <div style="border-top:1px ridge rgba(255, 255, 255, 0.15)"></div>
+    <div class="menu">
+        <ul id="menu">
+            <li><a href="#"><i class="fa fa-tachometer"></i> <span>Dashboard</span>
+                <div class="clearfix"></div>
+            </a></li>
+
+
+            <li id="menu-academico"><a href="{% url 'admin_home' %}"><span></span>Home
+                <div class="clearfix"></div>
+            </a></li>
+            <li><a href="#"><span>Add </span>
+                <div class="clearfix"></div>
+            </a>
+                <ul id="menu-academico-sub">
+                    <li id="menu-academico-avaliacoes" ><a href="{% url 'add_doctor' %}">Add Doctor</a></li>
+                    <li id="menu-academico-avaliacoes" ><a href="{% url 'add_staff' %}">Add Staff</a></li>
+                </ul>
+                <ul id="menu-academico-sub">
+
+
+                </ul>
+
+
+            </li>
+                <div class="clearfix"></div>
+            </a>
+                <ul id="menu-academico-sub">
+
+
+
+                </ul>
+            </li>
+            <!--<li><a href="{% url 'records' %}"><span>View Records</span>
+                <div class="clearfix"></div>
+            </a></li>-->
+            <li><a href="{% url 'logout' %}"><span>Log Out</span>
+                <div class="clearfix"></div>
+            </a></li>
+
+        </ul>
+    </div>
+</div>
+<div class="clearfix"></div>
+</div>

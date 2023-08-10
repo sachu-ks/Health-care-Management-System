@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Records</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Pooled Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
+    <script type="application/x-javascript">
+         addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+
+    </script>
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'css5/bootstrap.min.css' %}" rel='stylesheet' type='text/css'/>
+    <!-- Custom CSS -->
+    <link href="{% static 'css5/style.css' %}" rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="{% static 'css5/morris.css' %}" type="text/css"/>
+    <!-- Graph CSS -->
+    <link href="{% static 'css5/font-awesome.css' %}" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="{% static 'js5/jquery-2.1.4.min.js' %}"></script>
+    <!-- //jQuery -->
+    <link href="{% static 'datatable/jquery.dataTables.min.css' %}" rel="stylesheet" type="text/css" media="all">
+    <script src="{% static 'js5/jquery-2.1.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'datatable/jquery.dataTables.min.js' %}"></script>
+      <script type="text/javascript" src="{% static 'datatable/bootstable.min.js' %}"></script>
+     <script type="text/javascript">
+             $(document).ready(function(){
+                $('#tableview').DataTable();
+             })
+
+     </script>
+    <!-- lined-icons -->
+    <link rel="stylesheet" href="{% static 'css5/icon-font.min.css' %}" type='text/css'/>
+    <!-- //lined-icons -->
+	<style type="text/css">
+	select
+	{
+		padding: 0rem 0rem;
+    	text-transform: uppercase;
+    	display: block;
+	    width: 100%;
+	    height: 34px;
+	    padding: 6px 12px;
+	    font-size: 14px;
+	    line-height: 1.42857143;
+	    color: #555;
+	    background-color: #fff;
+	    background-image: none;
+	    border: 1px solid #ccc;
+	}
+    input[name="download"]
+	{
+
+    color: white;
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: transparent;
+    border: 1px solid #E9E9E9;
+    background-color:#1977cc;
+	}
+</style>
+</head>
+<body>
+<div class="page-container">
+    <!--/content-inner-->
+    <div class="left-content">
+    <div></div>
+        <div class="mother-grid-inner">
+            <!--header start here-->
+            {% include 'side.html' %}
+            <!--heder end here-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'admin_home' %}">Home</a><i class="fa fa-angle-right"></i>Records <i
+                        class="fa fa-angle-right"></i></li>
+            </ol>
+            <!--grid-->
+            <section id="view" class="">
+            <div class="grid-form">
+
+                    <div class="section-title">
+                        <h2>View Patients Record</h2>
+                        <p></p>
+                    </div>
+                <table id="tableview">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Patient Name</th>
+                                <th>Patient Email</th>
+                                <th>Download</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for record in data %}
+                        <tr>
+                            <td>{{record.id}}</td>
+                            <td>{{record.patient.name}}</td>
+                            <td>{{record.patient.email}}</td>
+                            <td><a href="{% url 'download' record.id %}"><input type="button" name="download" class="download" value="DOWNLOAD"></a></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                </table>
+            </div>
+        </div>
+        </section>
+            <!--//grid-->
+
+                <!-- script-for sticky-nav -->
+                <script>
+		$(document).ready(function() {
+			 var navoffeset=$(".header-main").offset().top;
+			 $(window).scroll(function(){
+				var scrollpos=$(window).scrollTop(); 
+				if(scrollpos >=navoffeset){
+					$(".header-main").addClass("fixed");
+				}else{
+					$(".header-main").removeClass("fixed");
+				}
+			 });
+			 
+		});
+
+
+                </script>
+                <!-- /script-for sticky-nav -->
+                <!--inner block start here-->
+                <div class="inner-block">
+
+                </div>
+                <!--inner block end here-->
+                <!--copy rights start here-->
+                {% include 'adminfooter.html' %}
+                <!--COPY rights end here-->
+        </div>
+        </div>
+        <!--//content-inner-->
+        <!--/sidebar-menu-->
+</div>
+        {% include 'adminheader.html' %}
+        <script>
+							var toggle = true;
+										
+							$(".sidebar-icon").click(function() {                
+							  if (toggle)
+							  {
+								$(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
+								$("#menu span").css({"position":"absolute"});
+							  }
+							  else
+							  {
+								$(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
+								setTimeout(function() {
+								  $("#menu span").css({"position":"relative"});
+								}, 400);
+							  }
+											
+											toggle = !toggle;
+										});
+
+
+        </script>
+        <!--js -->
+        <script src="{% static 'js5/jquery.nicescroll.js' %}"></script>
+        <script src="{% static 'js5/scripts.js' %}"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{% static 'js5/bootstrap.min.js' %}"></script>
+        <!-- /Bootstrap Core JavaScript -->
+
+</body>
+</html>

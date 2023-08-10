@@ -1,0 +1,79 @@
+          
+
+<!-- End Header -->
+{% load static %}
+{% block content %}
+{% include 'header.html' %}
+
+  <!-- ======= Hero Section ======= -->
+  
+  <section style="background-color:rgba(55, 64, 85, 0.9);" class="d-flex align-items-center justify-content-center">
+    <div class="container position-relative">
+     
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        </ol>
+                        
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-chart-area me-1"></i>
+                               Application 
+                            </div>
+                            <div class="card-body">
+							
+							<form method="POST" enctype="multipart/form-data" action="applications">
+{% csrf_token %}
+<table>
+
+<tr>
+<td>Internship Name:</td>
+<td><input type="text" value="{{result.Name}}" readonly name="internid" class="form-control"><br><br></td>
+</tr>
+<tr>
+<td>Amount:</td>
+<td><input type="text" name="amount" readonly value="{{result.Amount}}"class="form-control"><br><br></td>
+</tr>
+<tr>
+<td>Date:</td>
+<td><input type="date" name="date" class="form-control"><br><br></td>
+</tr>
+<tr>
+<td>Phone No:</td>
+<td><input type="text" name="phone" class="form-control"><br><br></td>
+</tr>
+
+<tr>
+<td><input type="submit" name="submit" class="btn btn-success"></td>
+</tr>
+</td>
+<table>
+
+<br><br>
+</form>
+							
+							
+							</div>
+                        </div>
+                      
+                    </div>
+                </main>
+				<footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Developed By Liji B Thomas</div>
+                            <div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+				</div>
+  {% include 'footer.html' %}
+		{% endblock%}
+
